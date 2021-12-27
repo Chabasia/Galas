@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>
+        Интернет магазин
+    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            {{ product.name }}
+        </div>
+        <div class="row justify-content-center">
+            {{ product.price }}
+        </div>
+        <ul class="row">
+            {% if not imgs %}
+                Увы, изображений данного товара ещё нет(
+            {% endif %}
+            {% for img in imgs %}
+            <li>
+                <img src="{{ img.image.url }}" alt="{{ product.name }}" >
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
